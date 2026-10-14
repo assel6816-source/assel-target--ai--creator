@@ -1,0 +1,265 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Прицел</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Layout: one-page service site. Bold cobalt hero band, then light sections with a sunny-yellow highlight. */
+:root {
+  --bg: #fbfaf6;
+  --surface: #ffffff;
+  --fg: #14162b;
+  --muted: #5b5f78;
+  --line: #e3e2da;
+  --accent: #2b4bff;
+  --accent-fg: #ffffff;
+  --sun: #ffd23f;
+  --sun-fg: #14162b;
+  --hero-bg: #2b4bff;
+  --hero-fg: #ffffff;
+  --font-display: "Unbounded", "Onest", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1120; --surface: #181b30; --fg: #f1f1f7; --muted: #a2a6c2; --line: #2a2e4b;
+    --accent: #7d92ff; --accent-fg: #0f1120; --hero-bg: #1a2270; --hero-fg: #ffffff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1120; --surface: #181b30; --fg: #f1f1f7; --muted: #a2a6c2; --line: #2a2e4b;
+  --accent: #7d92ff; --accent-fg: #0f1120; --hero-bg: #1a2270; --hero-fg: #ffffff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: 72px; }
+
+/* Header + hero */
+.hero { background: var(--hero-bg); color: var(--hero-fg); padding-block: 20px 72px; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 8px 56px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand i { width: 22px; height: 22px; background: var(--sun); border-radius: 50% 50% 50% 4px; display: block; }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav a { text-decoration: none; font-weight: 500; opacity: .92; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
+.hero h1 { font-size: clamp(32px, 5.4vw, 60px); }
+.hero h1 mark { background: var(--sun); color: var(--sun-fg); padding: 0 .18em; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero .lead { margin-top: 24px; font-size: 19px; max-width: 34em; opacity: .94; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.btn {
+  display: inline-block; font: 600 16px/1 var(--font-body); text-decoration: none; cursor: pointer;
+  padding: 16px 26px; border-radius: 999px; border: 2px solid transparent;
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-sun { background: var(--sun); color: var(--sun-fg); }
+.btn-line { border-color: currentColor; color: inherit; }
+.btn-accent { background: var(--accent); color: var(--accent-fg); }
+
+.facts { display: grid; gap: 14px; }
+.fact { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 18px; padding: 18px 20px; }
+.fact b { display: block; font-family: var(--font-display); font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 15px; opacity: .9; }
+
+/* Sections */
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.band h2 { font-size: clamp(26px, 3.8vw, 40px); margin-top: 10px; max-width: 18em; }
+.sub { color: var(--muted); margin-top: 14px; max-width: 38em; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 40px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; min-width: 0; }
+.card h3 { font-size: 19px; }
+.card p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+.tag { display: inline-block; margin-top: 18px; font-weight: 600; font-size: 15px; background: var(--sun); color: var(--sun-fg); padding: 5px 12px; border-radius: 999px; }
+
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 3px solid var(--accent); padding-top: 16px; min-width: 0; }
+.steps li::before { content: "Шаг " counter(s); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.steps h3 { font-size: 18px; margin-top: 6px; }
+.steps p { color: var(--muted); margin-top: 8px; font-size: 16px; }
+
+.alt { background: var(--surface); border-block: 1px solid var(--line); }
+.price-list { margin-top: 36px; border-top: 1px solid var(--line); }
+.price-row { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.price-row strong { font-size: 18px; font-weight: 600; }
+.price-row small { display: block; color: var(--muted); font-size: 15px; margin-top: 2px; }
+.price-row .sum { font-family: var(--font-display); font-weight: 500; font-size: 18px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.note { color: var(--muted); font-size: 14px; margin-top: 16px; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact > * { min-width: 0; }
+.details { margin-top: 28px; display: grid; gap: 14px; }
+.details div { display: flex; flex-direction: column; }
+.details dt { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.details dd { margin: 0; font-size: 18px; font-weight: 500; user-select: all; }
+form { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 26px; display: grid; gap: 16px; }
+label { display: grid; gap: 6px; font-weight: 500; font-size: 15px; }
+input, textarea {
+  font: 400 16px/1.4 var(--font-body); color: var(--fg); background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 14px; width: 100%;
+}
+input:focus, textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+textarea { min-height: 96px; resize: vertical; }
+.status { font-size: 15px; min-height: 1.4em; color: var(--accent); font-weight: 500; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 800px) {
+  .hero-grid, .contact { grid-template-columns: 1fr; gap: 32px; }
+  .band { padding-block: 52px; }
+  .nav { padding-bottom: 36px; }
+  .facts { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Основное меню">
+      <a class="brand" href="#top"><i aria-hidden="true"></i>Прицел</a>
+      <ul>
+        <li><a href="#uslugi">Услуги</a></li>
+        <li><a href="#kak">Как работаем</a></li>
+        <li><a href="#ceny">Цены</a></li>
+        <li><a href="#kontakty">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="hero-grid" id="top">
+      <div>
+        <h1>Таргетированная реклама, которая <mark>приводит клиентов</mark></h1>
+        <p class="lead">Настраиваем и ведём рекламу в Instagram, Facebook и TikTok. Показываем объявления тем, кто готов купить, и отчитываемся за каждый потраченный тенге.</p>
+        <div class="cta-row">
+          <a class="btn btn-sun" href="#kontakty">Получить бесплатный аудит</a>
+          <a class="btn btn-line" href="#uslugi">Смотреть услуги</a>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>3 дня</b><span>от заявки до запуска первых объявлений</span></div>
+        <div class="fact"><b>до 40%</b><span>снижение цены заявки после оптимизации</span></div>
+        <div class="fact"><b>80+</b><span>проектов в разных нишах</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="band" id="uslugi">
+    <div class="wrap">
+      <p class="eyebrow">Услуги</p>
+      <h2>Что мы делаем для вашей рекламы</h2>
+      <p class="sub">Берём на себя всё: от анализа аудитории до отчётов. Вы получаете заявки, а не настройки кабинета.</p>
+      <div class="cards">
+        <article class="card"><h3>Аудит рекламы</h3><p>Смотрим текущие кампании, находим, где уходит бюджет впустую, и даём план улучшений.</p><span class="tag">бесплатно</span></article>
+        <article class="card"><h3>Запуск под ключ</h3><p>Стратегия, аудитории, креативы, тексты и настройка кабинета до первых заявок.</p><span class="tag">от 80 000 ₸</span></article>
+        <article class="card"><h3>Ведение кампаний</h3><p>Ежедневно следим за показателями, тестируем связки и снижаем стоимость заявки.</p><span class="tag">от 120 000 ₸ в месяц</span></article>
+        <article class="card"><h3>Креативы и лид-формы</h3><p>Рисуем баннеры, снимаем короткие видео и собираем заявки через формы и мессенджеры.</p><span class="tag">от 30 000 ₸</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="kak">
+    <div class="wrap">
+      <p class="eyebrow">Порядок работы</p>
+      <h2>Четыре шага от заявки до первых клиентов</h2>
+      <ol class="steps">
+        <li><h3>Знакомимся с бизнесом</h3><p>Узнаём продукт, клиентов и цели, смотрим конкурентов.</p></li>
+        <li><h3>Готовим стратегию</h3><p>Выбираем площадки, аудитории и бюджет, согласуем креативы.</p></li>
+        <li><h3>Запускаем и тестируем</h3><p>Проверяем несколько связок и оставляем те, что дают заявки.</p></li>
+        <li><h3>Отчитываемся и растим</h3><p>Каждую неделю показываем цифры и масштабируем рабочее.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="ceny">
+    <div class="wrap">
+      <p class="eyebrow">Цены</p>
+      <h2>Понятная стоимость без сюрпризов</h2>
+      <div class="price-list">
+        <div class="price-row"><div><strong>Аудит рекламы</strong><small>Разбор кампаний и план улучшений</small></div><span class="sum">0 ₸</span></div>
+        <div class="price-row"><div><strong>Запуск под ключ</strong><small>Стратегия, креативы, настройка кабинета</small></div><span class="sum">от 80 000 ₸</span></div>
+        <div class="price-row"><div><strong>Ведение кампаний</strong><small>Ежемесячно, рекламный бюджет оплачивается отдельно</small></div><span class="sum">от 120 000 ₸</span></div>
+        <div class="price-row"><div><strong>Креативы и лид-формы</strong><small>Баннеры, видео и формы сбора заявок</small></div><span class="sum">от 30 000 ₸</span></div>
+      </div>
+      <p class="note">Цены указаны для примера, подставьте свои. Рекламный бюджет оплачивается напрямую рекламной площадке.</p>
+    </div>
+  </section>
+
+  <section class="band alt" id="kontakty">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">Контакты</p>
+        <h2>Получите бесплатный аудит рекламы</h2>
+        <p class="sub">Оставьте контакты и ссылку на вашу страницу. Ответим в течение рабочего дня.</p>
+        <dl class="details">
+          <div><dt>Телефон</dt><dd>+7 700 000 00 00</dd></div>
+          <div><dt>Почта</dt><dd>info@example.kz</dd></div>
+          <div><dt>Часы работы</dt><dd>Пн–Пт, 9:00–18:00</dd></div>
+        </dl>
+      </div>
+      <form id="lead" novalidate>
+        <label for="name">Ваше имя
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Например, Асель">
+        </label>
+        <label for="phone">Телефон
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 700 000 00 00">
+        </label>
+        <label for="task">Чем занимается ваш бизнес
+          <textarea id="task" name="task" placeholder="Ниша, город и ссылка на Instagram или сайт"></textarea>
+        </label>
+        <button class="btn btn-accent" type="submit">Получить аудит</button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Прицел</span>
+    <span>Все права защищены</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('lead');
+  var status = document.getElementById('status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    if (!name || !phone) {
+      status.textContent = 'Укажите имя и телефон, чтобы мы могли с вами связаться.';
+      return;
+    }
+    status.textContent = 'Форма заполнена верно. В этой версии сайта отправка заявок ещё не подключена.';
+  });
+})();
+</script>
+
+</body></html>
